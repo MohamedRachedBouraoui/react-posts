@@ -1,0 +1,40 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "1st post",
+      "datetime": "July 16, 2021 11:47:39 AM",
+      "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+    },
+    {
+      "id": 2,
+      "title": "Second post",
+      "datetime": "July 16, 2021 11:47:48 AM",
+      "body": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. two"
+    },
+    {
+      "id": 3,
+      "datetime": "January 23 2022 5:45:47 PM",
+      "title": "Number Three",
+      "body": "Third post... Lorem"
+    },
+    {
+      "id": 4,
+      "datetime": "January 23 2022 5:44:04 PM",
+      "title": "Testing a 4th post",
+      "body": "J'ai bien hâte de te revoir à l'école demain!!! "
+    },
+    {
+      "id": 5,
+      "datetime": "January 23 2022 5:46:19 PM",
+      "title": "post-1",
+      "body": "tu seras prêt demain matin! 🌵🌴"
+    },
+    {
+      "id": 6,
+      "datetime": "January 26 2022 6:20:33 AM",
+      "title": "post-99",
+      "body": "hello there !!!"
+    }
+  ]
+}
