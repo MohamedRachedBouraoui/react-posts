@@ -1,25 +1,17 @@
-import Header from "./Header";
-import Nav from "./Nav";
-import Footer from "./Footer";
-import Home from "./Home";
-import NewPost from "./NewPost";
-import PostPage from "./PostPage";
-import EditPost from "./EditPost";
-import About from "./About";
-import Missing from "./Missing";
-import { Route, Switch, useHistory } from "react-router-dom";
+import { createContext,useState,useEffect    } from "react";
 
-import { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 
-import api from "./api/posts";
-import useWindowSize from "./hooks/useWindowSize";
-import useAxiosFetch from "./hooks/useAxiosFetch";
+
+import api from "../api/posts";
+import useWindowSize from "../hooks/useWindowSize";
+import useAxiosFetch from "../hooks/useAxiosFetch";
 import { format } from "date-fns";
 
-import { DataProvider } from "./context/DataContext";
+const DataContext=createContext({} );
 
-function App() {
-
+export const DataProvider=({children})=>{
+    
   const [posts, setPosts] = useState([]);
 
   const [postTitle, setPostTitle] = useState('');
@@ -38,34 +30,6 @@ function App() {
   useEffect(() => {
     setPosts(data)
   }, [data]);
-
-  //useWindowSize();
-
-  // useEffect(() => {
-
-  //   const fetchPosts = async () => {
-
-  //     try {
-  //       const resp = await api.get('/posts');
-
-  //       if (resp && resp.data)
-  //         setPosts(resp.data);
-
-  //     } catch (error) {
-  //       if (error.repsponse) {//status > 200
-  //         console.log(error.repsponse.data);
-  //         console.log(error.repsponse.status);
-  //         console.log(error.repsponse.headers);
-  //       } else {
-  //         console.log(`Error: ${error.message}`);
-  //       }
-  //     }
-  //   }
-
-  //   fetchPosts();
-  // }, [])
-
-
 
   useEffect(() => {
     const filteredResult = posts.filter(post =>
@@ -129,37 +93,19 @@ function App() {
 
     }
   }
-  
 
-  return (
-    
+    return (
+        <DataContext.Provider value={{
+            width,
+            isLoading, fetchError,
+            search,setSearch,searchResults,
+            postTitle, setPostTitle, postBody, setPostBody, handleSubmit
 
-    <div className="App">
-      <DataProvider>
-        <Header title="React JS Blog" />
-        <Nav />
-        <Switch>
-          <Route exact path="/"  component={Home} />
-          <Route exact path="/post" component={NewPost} />
-          <Route path="/edit/:id">
-            <EditPost posts={posts}
-              handleEdit={handleEdit}
-              editPostTitle={editPostTitle}
-              setEditPostTitle={setEditPostTitle}
-              editPostBody={editPostBody}
-              setEditPostBody={setEditPostBody}
-            />
-          </Route>
-          <Route path="/post/:id">
-            <PostPage posts={posts} handleDelete={handleDelete} />
-          </Route>
-          <Route path="/about" component={About} />
-          <Route path="*" component={Missing} />
-        </Switch>
-        <Footer />
-      </DataProvider>
-    </div>
-  );
-}
+        }}>
+            {children}
 
-export default App;
+        </DataContext.Provider>
+    )
+};
+
+export default DataContext;
